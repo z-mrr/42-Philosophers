@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 14:53:44 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/18 19:49:58 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/18 21:29:48 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	init_data(t_data *data, int ac, char **av)
 	data->start = gettime();
 	data->stop = 0;
 	data->mutex_fork = malloc(sizeof(pthread_mutex_t) * data->n_philos);
+	if (!data->mutex_fork)
+		mem_err();
 	pthread_mutex_init(&data->mutex_log, NULL);
 }
 
