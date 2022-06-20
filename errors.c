@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   erros.c                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:49:23 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/18 17:29:25 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:53:57 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ int	args_err(void)
 	return (2);
 }
 
-void	mem_err(void)
-{
-	printf("Memory allocation failed.\n");
-	exit (-1);
-}
-
 int	th_err(int err)
 {
 	if (err == 3)
@@ -43,4 +37,10 @@ int	th_err(int err)
 		return (4);
 	}
 	return (0);
+}
+
+int	mem_err(void)
+{
+	printf("Memory allocation failed.\n");
+	return (5);
 }

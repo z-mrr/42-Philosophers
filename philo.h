@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:17:38 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/20 12:30:44 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:59:17 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct s_philo
 }				t_philo;
 
 //main.c
-void	init_data(t_data *data, int ac, char **av);
-void	init_philo(t_data *data, t_philo **philo);
+int		init_data(t_data *data, int ac, char **av);
+int		init_philo(t_data *data, t_philo **philo);
 int		check_args(char **av);
 
 //philo.c
@@ -57,6 +57,7 @@ void	*routine(void *philo);
 void	philosophers(t_philo *philo);
 
 //utils.c
+void	ft_usleep(int ms);
 void	free_destroy(t_data data, t_philo *philo);
 void	print_log(t_philo philo, char *log);
 long	gettime(void);
@@ -65,7 +66,7 @@ long	ft_atol(const char *nptr);
 //errors.c
 int		argn_err(void);
 int		args_err(void);
-void	mem_err(void);
 int		th_err(int err);
+int		mem_err(void);
 
 #endif

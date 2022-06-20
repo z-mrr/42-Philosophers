@@ -6,11 +6,20 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:03:24 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/18 20:22:48 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:58:58 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_usleep(int ms)
+{
+	long	time;
+
+	time = gettime();
+	while ((gettime() - time) < ms)
+		usleep(ms);
+}
 
 void	free_destroy(t_data data, t_philo *philo)
 {
