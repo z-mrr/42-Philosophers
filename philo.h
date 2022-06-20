@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:17:38 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/18 20:44:54 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:00:17 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <sys/time.h>
-
-# define MAX_INT 2147483647
 
 typedef struct s_data
 {
