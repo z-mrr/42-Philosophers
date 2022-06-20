@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:17:38 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/20 12:00:17 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:30:44 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	init_philo(t_data *data, t_philo **philo);
 int		check_args(char **av);
 
 //philo.c
-int		check_meals(t_philo *philo);
+int		has_eaten(t_philo *philo);
 void	*check_stop(void *arg);
-void	eating(t_philo *philo);
+void	is_eating(t_philo *philo);
 void	*routine(void *philo);
 void	philosophers(t_philo *philo);
 

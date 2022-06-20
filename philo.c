@@ -6,13 +6,13 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:49:52 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/20 11:57:48 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:30:44 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_meals(t_philo *philo)
+int	has_eaten(t_philo *philo)
 {
 	int	i;
 	int	aux;
@@ -21,7 +21,7 @@ int	check_meals(t_philo *philo)
 	{
 		i = 0;
 		aux = 0;
-		while (philo[i].id)
+		while (i < philo->data->n_philos)
 		{
 			if (philo[i].meals >= philo->data->n_meals)
 				aux++;
@@ -30,10 +30,10 @@ int	check_meals(t_philo *philo)
 		if (aux >= philo->data->n_philos)
 		{
 			philo->data->stop = 1;
-			return (0);
+			return (1);
 		}
 	}
-	return (1);
+	return (0);
 }
 
 void	*check_stop(void *arg)
@@ -42,7 +42,7 @@ void	*check_stop(void *arg)
 	int		i;
 
 	philo = (t_philo *)arg;
-	while (check_meals(philo))
+	while (!has_eaten(philo))
 	{
 		i = 0;
 		while (i < philo->data->n_philos)
@@ -59,7 +59,7 @@ void	*check_stop(void *arg)
 	return (NULL);
 }
 
-void	eating(t_philo *philo)
+void	is_eating(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->mutex_fork[philo->l_fork]);
 	pthread_mutex_lock(&philo->data->mutex_fork[philo->r_fork]);
@@ -85,7 +85,7 @@ void	*routine(void *arg)
 	}
 	while (!philo->data->stop)
 	{
-		eating(philo);
+		is_eating(philo);
 		print_log(*philo, "is sleeping");
 		usleep(philo->data->t_sleep * 1000);
 		print_log(*philo, "is thinking");
