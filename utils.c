@@ -6,18 +6,18 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:03:24 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/20 15:58:58 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:28:08 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_usleep(int ms)
+void	ft_usleep(t_philo philo, int ms)
 {
 	long	time;
 
 	time = gettime();
-	while ((gettime() - time) < ms)
+	while (!philo.data->stop && (gettime() - time) < ms)
 		usleep(ms);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:17:38 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/20 15:59:17 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:24:03 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	*routine(void *philo);
 void	philosophers(t_philo *philo);
 
 //utils.c
-void	ft_usleep(int ms);
+void	ft_usleep(t_philo philo, int ms);
 void	free_destroy(t_data data, t_philo *philo);
 void	print_log(t_philo philo, char *log);
 long	gettime(void);

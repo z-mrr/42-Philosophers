@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:49:52 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/20 16:09:57 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:24:20 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	is_eating(t_philo *philo)
 	philo->last_meal = gettime();
 	print_log(*philo, "is eating");
 	philo->meals++;
-	ft_usleep(philo->data->t_eat);
+	ft_usleep(*philo, philo->data->t_eat);
 	pthread_mutex_unlock(&philo->data->mutex_fork[philo->l_fork]);
 	pthread_mutex_unlock(&philo->data->mutex_fork[philo->r_fork]);
 }
@@ -89,7 +89,7 @@ void	*routine(void *arg)
 	{
 		is_eating(philo);
 		print_log(*philo, "is sleeping");
-		ft_usleep(philo->data->t_sleep);
+		ft_usleep(*philo, philo->data->t_sleep);
 		print_log(*philo, "is thinking");
 	}
 	return (NULL);
