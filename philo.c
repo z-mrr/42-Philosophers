@@ -6,7 +6,7 @@
 /*   By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 14:49:52 by jdias-mo          #+#    #+#             */
-/*   Updated: 2022/06/21 17:08:32 by jdias-mo         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:12:38 by jdias-mo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void	*routine(void *arg)
 		print_log(*philo, "has taken a fork");
 		return (NULL);
 	}
-	if (!(philo->id % 2))
-		ft_usleep(*philo, 1);
 	while (!philo->data->stop)
 	{
 		is_eating(philo);
