@@ -6,33 +6,50 @@
 #    By: jdias-mo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/18 20:31:00 by jdias-mo          #+#    #+#              #
-#    Updated: 2022/06/20 16:24:10 by split            ###   ########.fr        #
+#    Updated: 2023/01/25 15:19:18 by jdias-mo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME =		philo
 
-SOURCES = main.c philo.c utils.c errors.c
+SRC =		$(addsuffix .c,	main \
+							philo \
+							utils \
+							errors)
 
-OBJECTS = $(SOURCES:.c=.o)
+INC_DIR =	inc/
 
-CC = gcc
+SRC_DIR =	src/
 
-CFLAGS = -pthread -Wall -Wextra -Werror
+OBJ_DIR =	obj/
 
-.c.o: $(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+INC =		-I$(INC_DIR)
 
-all: $(NAME)
+OBJ =		$(addprefix $(OBJ_DIR), $(patsubst %.c, %.o, $(SRC)))
 
-$(NAME): $(OBJECTS) philo.h
-	$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+CC =		gcc
+
+CFLAGS =	-pthread -Wall -Wextra -Werror
+
+RM =		rm -f
+
+all:			$(NAME)
+
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				$(CC) $(CFLAGS) -c $(<) -o $(@) $(INC)
+
+$(OBJ_DIR):
+				mkdir $(OBJ_DIR)
+
+$(NAME):		$(OBJ_DIR) $(OBJ)
+				$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(OBJECTS)
+				$(RM) $(OBJ) -r $(OBJ_DIR)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:			clean
+				$(RM) $(NAME)
 
-re: fclean all
+re:				fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY:			all clean fclean re
